@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#script to render ls withput the numbers
+for i in *
+do
+	echo "$i" | cut -f 2- -d '-'
+done
