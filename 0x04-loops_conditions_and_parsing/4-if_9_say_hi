@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#print Best School and Hi
+x="0"
+while [ $x -lt 10 ]
+do
+	if [ $x = 8 ]
+	then
+		echo "Best School"
+		echo "Hi"
+		x=$(( x + 1 ))
+	else
+		echo "Best School"
+		x=$(( x + 1 ))
+	fi
+done
