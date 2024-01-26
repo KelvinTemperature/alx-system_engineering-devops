@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#superstitious numbers
+d="1"
+while [ $d -le 20 ]
+do
+	case $d in
+		4)
+		echo "$d"
+		echo "bad luck from China"
+		d=$(( d + 1 ))
+		;;
+		9)
+		echo "$d"
+		echo "bad luck from Japan"
+		d=$(( d + 1 ))
+		;;
+		17)
+		echo "$d"
+		echo "bad luck from Italy"
+		d=$(( d + 1 ))
+		;;
+		*)
+		echo "$d"
+		d=$(( d + 1 ))
+		;;
+	esac
+done
