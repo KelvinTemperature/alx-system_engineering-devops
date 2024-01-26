@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#script to display PID with process name bash
+top | awk '/bash/ {print $2,$13}'
