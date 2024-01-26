@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#script to display all lines containing bash
+# shellcheck disable=SC2009
+ps aux | awk '/bash/ {print}'
