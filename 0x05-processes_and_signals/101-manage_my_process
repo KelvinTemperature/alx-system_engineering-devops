@@ -16,7 +16,7 @@ stop() {
 case "$1" in
 	start)
 		start
-		echo "manage_my_process Statrted"
+		echo "manage_my_process statrted"
 		;;
 	stop)
 		stop
