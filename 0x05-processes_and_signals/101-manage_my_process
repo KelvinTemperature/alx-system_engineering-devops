@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 #script to manage my process
-. /lib/lsb/init-functions
+#./lib/lsb/init-functions
 
-pros_file=/var/run/my_process.pid
+PROS_FILE=/var/run/my_process.pid
+
+$PROS_FILE
 
 start() {
 	./manage_my_process &
-	echo "$!" > "$pros_file"
+	echo "$!" > "$PROS_FILE"
 }
 
 stop() {
-	sudo kill -15 "$(cat "$pros_file")" && rm -rf "$pros_file"
+	sudo kill -15 "$(cat "$PROS_FILE")" && rm -f "$PROS_FILE"
 }
 
 case "$1" in
