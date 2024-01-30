@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #process and pid script advanced
 echo $$ > /var/run/myscript.pid
-trap 'echo "I hate the kill comman"; rm -rf /var/run/myscript.pid; exit' SIGTERM
+trap 'echo "I hate the kill command"; rm -rf /var/run/myscript.pid; exit' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
 trap 'rm -rf /var/run/myscript.pid; exit' SIGQUIT
 while :
