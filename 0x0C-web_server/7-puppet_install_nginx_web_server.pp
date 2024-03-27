@@ -1,7 +1,7 @@
 #Set up Ubuntu server with nginx
 
 exec { 'update system':
-	command => 'usr/bin/apt-get update',
+	command => '/usr/bin/apt-get update',
 }
 
 package { 'nginx':
@@ -14,7 +14,7 @@ file { '/var/www/html/index.html':
 }
 
 exec { 'redirect_me':
-	command => 'sudo sed -i "24i\     rewrite ^/redirect_me intranet.alxswe.com permanent;" /etc/nginx/sites-available/default'
+	command => 'sed -i "24i\     rewrite ^/redirect_me intranet.alxswe.com permanent;" /etc/nginx/sites-available/default'
 	provider => 'shell'
 }
 
