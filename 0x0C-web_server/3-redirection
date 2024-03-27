@@ -20,7 +20,7 @@ cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.b
 echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 
 #setting /redirect_me
-sudo sed -i '24i\     rewrite ^/redirect_me http://intranet.alxswe.com permanent;' /etc/nginx/sites-available/default
+sudo sed -i '24i\     rewrite ^/redirect_me https://intranet.alxswe.com permanent;' /etc/nginx/sites-available/default
 
 #Restarting nginx
 sudo service nginx restart
