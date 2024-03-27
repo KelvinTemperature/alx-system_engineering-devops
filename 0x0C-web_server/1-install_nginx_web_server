@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#Script to install Nginx on a server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+#starting Nginx service
+sudo service nginx start
+
+#allowing nginx on firewalls
+sudo ufw allow 'Nginx HTTP'
+
+#change ownership to user
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+#backup default index
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+#creating new index
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+
+#Restarting nginx
+sudo service nginx restart
