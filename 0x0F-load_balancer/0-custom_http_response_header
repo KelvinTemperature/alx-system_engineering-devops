@@ -1,5 +1,32 @@
 #!/usr/bin/env bash
 #Script to configure HTTP response to containa custom header
+#Script to install Nginx on a server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+#starting Nginx service
+sudo service nginx start
+
+#allowing nginx on firewalls
+sudo ufw allow 'Nginx HTTP'
+
+#change ownership to user
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+#backup default index
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+#creating new index
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+
+#setting /redirect_me
+sudo sed -i '/server_name _;/server_name_;\n\t rewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/' /etc/nginx/sites-available/default
+
+#setting HTTP 404 error code
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
+sed -i "/server_name _;/a \\\trewrite ^\/redirect_me https:\/\/github.com\/KelvinTemperature permanent;\n\n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
+
 # Define the custom header value
 custom_header="X-Served-By"
 
