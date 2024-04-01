@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#Script to configure HTTP response to containa custom header
+# Define the custom header value
+custom_header="X-Served-By"
+
+# Add the custom header to Nginx configuration
+sudo sh -c 'echo "add_header X-Custom-Header \"$custom_header\";" > /etc/nginx/conf.d/custom_header.conf'
+
+# Test Nginx configuration
+sudo nginx -t
+
+# If the configuration test is successful, reload Nginx
+sudo service nginx start
