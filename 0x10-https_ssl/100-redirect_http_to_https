@@ -1,0 +1,17 @@
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
+frontend vintemp-tech-frontend
+    bind *:80
+    bind *:443 ssl crt /etc/haproxy/certs/www.vintemp.tech.pem
+    redirect scheme https code 301 if !{ ssl_fc }
+    default_backend vintemp-tech-backend
+
+backend vintemp-tech-backend
+    balance roundrobin
+    server 523801-web-01 54.209.10.115:80 check
+    server 523801-web-02 54.158.220.44:80 check
