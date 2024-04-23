@@ -16,11 +16,11 @@ if __name__ == '__main__':
     data = {user_id: []}
     for todo in todos:
         task_info = {
+                "username": user['username'],
                 "task": todo['title'],
                 "completed": todo['completed'],
-                "username": user['name']
                 }
         data[user_id].append(task_info)
 
-    with open('{}.json'.format(user_id), 'w') as file:
-        json.dump(data, file)
+    with open('{}.json'.format(user_id), 'w') as jfile:
+        json.dump(data, jfile)

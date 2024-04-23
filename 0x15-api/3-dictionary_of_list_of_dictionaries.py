@@ -22,7 +22,7 @@ def get_all_data():
 
         for todo in todos:
             task_info = {
-                    "username": user['name'],
+                    "username": user['username'],
                     "task": todo['title'],
                     "completed": todo['completed'],
                     }
