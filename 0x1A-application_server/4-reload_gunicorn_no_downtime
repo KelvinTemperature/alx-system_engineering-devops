@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#carefully reloads Gunicorn
+pgrep gunicorn | xargs kill -mvp
